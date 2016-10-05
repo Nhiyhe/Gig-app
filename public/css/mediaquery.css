@@ -1,0 +1,42 @@
+@media only screen and (max-width: 767px){
+    
+    .navbar-default{
+        background-color: #fff !important;
+        border-color:#e6e6e6;
+        
+    }
+    
+    .navbar-default .navbar-nav > li > a{
+        color:#070A0A !important;
+        background-color: #fff;
+    }
+}
+
+/*small devices and tablets*/
+@media only screen and (max-width: 768px){
+    
+    .header-text,
+    .button-group{
+        text-align: center;
+    }
+    
+    #btnPopover{
+        margin-bottom: 20px;
+    }
+    
+    #carousel-leadership{
+        margin-bottom: 20px;
+    }
+}
+
+/* medium devices and desktops*/
+@media only screen and (min-width: 992px){
+    
+    
+}
+
+/*large devices and wide screen*/
+@media only screen and (min-width: 1200px){
+    
+    
+}
