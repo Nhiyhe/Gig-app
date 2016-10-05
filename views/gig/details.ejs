@@ -6,7 +6,9 @@
              <h1>Gigs</h1>
          <div>
           <h2><%= gig.title %></h2>
-
+          <span class="venue"> <%= gig.venue %></span>
+           <div class="date"><%= gig.createdOn%></div>
+           <span class="btn-comment"><a href="/gigs/<%= gig._id %>/comment/new" class="btn btn-success btn-xs">Add Comment</a></span>
         </div>
        </div>
     </div>
