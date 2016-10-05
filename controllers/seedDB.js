@@ -33,39 +33,46 @@ var Gigs = [{
     title:'dancing with the queen',
     venue:'Portland Ministry',
     eventDate:''
-  
 
 },
+
 {
     title:'New year Party',
     venue:'manchester picadilly',
-    eventDate:''
-    
+    eventDate:''   
 
 }
 ]
 
 var seedDb = function(){
-
-Gig.remove({},function(err){
-    console.log("Gigs removed...");
-  if(err){
-      console.log(err);
-  }
- 
-  Gigs.forEach(function(gig){
-      Gig.create(gig, function(err, data){
-          if(err){
-              console.log(err);
-          }else{
-              console.log('Gig created')
-          }
-      })
-  }) 
   
-});
+  seedGigs();
+  seedUsers();
+};
 
- User.remove({},function(err, data){
+var seedGigs = function(){
+        Gig.remove({},function(err){
+        console.log("Gigs removed...");
+    if(err){
+        console.log(err);
+    }
+    
+    Gigs.forEach(function(gig){
+        Gig.create(gig, function(err, data){
+            if(err){
+                console.log(err);
+            }else{
+                console.log('Gig created')
+            }
+        })
+    }) 
+    
+    });
+
+}
+
+var seedUsers = function(){
+     User.remove({},function(err, data){
  console.log('Data removed from db');
   
       Users.forEach(function(user){
@@ -79,7 +86,7 @@ Gig.remove({},function(err){
     });
 
  });
+}
 
-};
 
 module.exports = seedDb;

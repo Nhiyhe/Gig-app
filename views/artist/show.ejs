@@ -1,8 +1,16 @@
 <%   include ../partials/header %>
 
-<% Users.forEach(function(user){ %>
-     <p> <%= user.username %> </p>
-     <div><%= user.profile.hobbies %> </div>
-<% }) %>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+        <div id="artist">
+        <h1>Artists</h1>
+            <% Users.forEach(function(user){ %>
+                <h2> <%= user.username %> </h2>
+                <div><%= user.profile.hobbies %> </div>
+            <% }) %>
+        </div>
+        </div>
+    </div>
+</div>
 <%   include ../partials/footer %>

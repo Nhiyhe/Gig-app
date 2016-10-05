@@ -25,3 +25,16 @@ body{
     text-transform: uppercase;
     color: rgb(50,200,255);
 }
+
+#artist h2{
+    font-size: 25px;
+    font-weight: 500;
+
+}
+
+#artist div{
+    font-size:14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-left: 40px;
+}

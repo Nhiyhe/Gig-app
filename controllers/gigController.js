@@ -15,7 +15,7 @@ module.exports = function(app){
     });
 
 
-    app.get('/gig/:id', function(req,res){
+    app.get('/gigs/:id', function(req,res){
         Gig.findById(req.params.id, function(err, foundGig){
             if(err){
                 console.log(err);

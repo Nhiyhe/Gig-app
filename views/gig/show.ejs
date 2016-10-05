@@ -2,12 +2,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-<h1>Gigs</h1>
+        <h1>Gigs</h1>
         <div id=gig>
         
             <% gigs.forEach(function(gig){ %>
            
-            <a href="#"><h3><%= gig.title%></h3></a>
+            <a href="/gigs/<%= gig._id %>"><h3><%= gig.title%></h3></a>
             <p><%= gig.venue %></p>  
              <h5><%= gig.createdOn %></h5>        
 
