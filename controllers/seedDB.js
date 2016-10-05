@@ -1,4 +1,6 @@
 var User = require('../models/user');
+var Gig = require('../models/gig');
+
 var Users = [{
     username:'James Watson',
     password:'password',
@@ -27,7 +29,42 @@ var Users = [{
 }
 ]
 
+var Gigs = [{
+    title:'dancing with the queen',
+    venue:'Portland Ministry',
+    eventDate:''
+  
+
+},
+{
+    title:'New year Party',
+    venue:'manchester picadilly',
+    eventDate:''
+    
+
+}
+]
+
 var seedDb = function(){
+
+Gig.remove({},function(err){
+    console.log("Gigs removed...");
+  if(err){
+      console.log(err);
+  }
+ 
+  Gigs.forEach(function(gig){
+      Gig.create(gig, function(err, data){
+          if(err){
+              console.log(err);
+          }else{
+              console.log('Gig created')
+          }
+      })
+  }) 
+  
+});
+
  User.remove({},function(err, data){
  console.log('Data removed from db');
   

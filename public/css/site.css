@@ -1,3 +1,27 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
 body{
-    background: lightblue;
+    background: #fff;
+    font-family: 'Open Sans','Arial';
+}
+
+#gig h3{
+    text-transform: capitalize;
+    font-size:26px;
+    font-weight:600;
+}
+
+#gig p{
+    font-size:16px;
+    font-weight:normal;
+}
+
+#gig h5{
+    font-size:16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgb(50,200,255);
 }

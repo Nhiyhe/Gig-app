@@ -3,7 +3,7 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose =   require('mongoose'),
-    UserController = require('./controllers/userController'),
+    ArtistController = require('./controllers/artistController'),
     Gigcontroller = require('./controllers/gigController'),
     seedDb        = require('./controllers/seedDB'),
     app = express();
@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.set('view engine','ejs');
 
 
-UserController(app);
+ArtistController(app);
 Gigcontroller(app);
 
 seedDb();
