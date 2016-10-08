@@ -11,7 +11,19 @@ var GigSchema = mongoose.Schema({
     eventDate:{
         Type:Date
     },
+    artist:{
+      id:{
+          type:mongoose.Schema.Types.ObjectId,
+          ref:'User'
+      }
+    },
 
+    genre:{
+        
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Genre'
+        
+    },
     comments:[
      {
      type:mongoose.Schema.Types.ObjectId,

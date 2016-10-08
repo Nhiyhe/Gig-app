@@ -10,9 +10,12 @@
             <a href="/gigs/<%= gig._id %>"><h3><%= gig.title%></h3></a>
             <p><%= gig.venue %></p>  
              <h5><%= gig.createdOn %></h5>        
-
-            <% }) %>
-
+                      <div><% if(gig.genre){ %>
+                      
+                      <%= gig.genre.name %>
+                      
+                       <% } %> </div>
+         <% }); %>
         </div>
         </div>
         </div>

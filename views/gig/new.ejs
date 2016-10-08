@@ -1,0 +1,32 @@
+<% include ../partials/header%>
+<div class="container">
+<div class="row">
+<div class="col-md-offset-4 col-md-4">
+<h3>New Gig</h3>
+<form action="/gigs/new" method="POST">
+<div class="form-group">
+<lable>Title</label>
+<input type="text" name="gig[title]" class="form-control" placeholder="title" />
+</div>
+
+<div class="form-group">
+<lable>Venue</label>
+<input type="text" name="gig[venue]" class="form-control" placeholder="venue" />
+</div>
+
+<div class="form-group">
+    <lable>Genre</label>
+    <select class="form-control" name="gig[genre]"> 
+    <% genres.forEach(function(genre){ %>
+            <option value="<%= genre._id %>"><%= genre.name %></option>
+    <% }) %>
+   
+    </select>
+</div>
+
+<input type="submit" value="Create" class="btn btn-primary" />
+</form>
+</div>
+</div>
+</div>
+<% include ../partials/footer%>

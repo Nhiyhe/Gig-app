@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var Gig = require('../models/gig');
+var Genre = require('../models/genre');
 
 var Users = [{
     username:'James Watson',
@@ -48,6 +49,7 @@ var seedDb = function(){
   
   seedGigs();
   seedUsers();
+  seedGenres();
 };
 
 var seedGigs = function(){
@@ -88,5 +90,20 @@ var seedUsers = function(){
  });
 }
 
+
+var seedGenres = function(){
+ Genre.remove({}, function(err){
+     console.log('Data deleted');
+
+       Genre.create([{name:'jazz'},{name:'blues'},{name:'country'}], function(err, genres){
+      if(err){
+          console.log(err);
+      }else{
+          console.log(genres);
+      }
+  });
+
+ })
+}
 
 module.exports = seedDb;
