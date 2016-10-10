@@ -34,6 +34,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req,res,next){
+
+        res.locals.currentUser = req.user;
+        return next();
+    
+    
+});
+
 mongoose.connect("mongodb://localhost/gig-app-db", function(){
     console.log(`Gig app Database is running`);
 });
@@ -49,6 +57,9 @@ Gigcontroller(app);
 
 seedDb();
 
+
+
+
 app.get('/',function(req,res){
     res.render('landing');
 });
@@ -59,8 +70,8 @@ app.get('/register', function(req,res){
 
 app.post('/register', function(req,res){
 
- var newUser = new User({username:req.body.username, email:req.body.email});
-
+ var newUser = new User({username:req.body.username, email:req.body.email });
+console.log(req.body.profile);
  User.register(newUser, req.body.password, function(err, user){
     if(err){
         console.log(err);
@@ -73,6 +84,17 @@ app.post('/register', function(req,res){
     });
 });
 
+
+
+
+var isLoggedIn = function(req,res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+
+    res.redirect('/register');
+};
+
 app.get('/login',function(req,res){
     res.render('login');
 });
@@ -83,7 +105,7 @@ app.post('/login', passport.authenticate('local',{successRedirect:'/gigs',failur
 
 app.get('/logout', function(req,res){
   req.logout();
-  res.send('your successfully logout');
+  res.redirect('/');
 });
 
 app.listen(PORT, function(){

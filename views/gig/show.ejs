@@ -1,23 +1,18 @@
-<%   include ../partials/header %>
+ <%   include ../partials/header %>
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-        <h1>Gigs</h1>
-        <div id=gig>
-        
-            <% gigs.forEach(function(gig){ %>
-           
-            <a href="/gigs/<%= gig._id %>"><h3><%= gig.title%></h3></a>
-            <p><%= gig.venue %></p>  
-             <h5><%= gig.createdOn %></h5>        
-                      <div><% if(gig.genre){ %>
-                      
-                      <%= gig.genre.name %>
-                      
-                       <% } %> </div>
-         <% }); %>
+             <h1>Gigs</h1>
+         <div>
+          <h2><%= gig.title %></h2>
+          <span class="venue"> <%= gig.venue %></span>
+           <div class="date"><%= gig.createdOn%></div>
+           <span class="btn-comment"><a href="/gigs/<%= gig._id %>/comment/new" class="btn btn-success btn-xs">Add Comment</a></span>
         </div>
-        </div>
-        </div>
-        </div>
+       </div>
+    </div>
+</div>
+
+
 <%   include ../partials/footer %>

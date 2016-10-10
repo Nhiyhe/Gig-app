@@ -15,7 +15,8 @@ var GigSchema = mongoose.Schema({
       id:{
           type:mongoose.Schema.Types.ObjectId,
           ref:'User'
-      }
+      },
+      username:String
     },
 
     genre:{       
