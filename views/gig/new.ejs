@@ -17,7 +17,9 @@
 <div class="form-group">
     <lable>Genre</label>
     <select class="form-control" name="gig[genre]"> 
+    <option value="-1">Select Genre </option>
     <% genres.forEach(function(genre){ %>
+            
             <option value="<%= genre._id %>"><%= genre.name %></option>
     <% }) %>
    

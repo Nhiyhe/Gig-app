@@ -18,12 +18,12 @@ var GigSchema = mongoose.Schema({
       }
     },
 
-    genre:{
-        
+    genre:{       
             type:mongoose.Schema.Types.ObjectId,
             ref:'Genre'
         
     },
+    
     comments:[
      {
      type:mongoose.Schema.Types.ObjectId,
