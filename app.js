@@ -55,7 +55,7 @@ app.set('view engine','ejs');
 ArtistController(app);
 Gigcontroller(app);
 
-seedDb();
+//seedDb();
 
 
 

@@ -14,7 +14,20 @@ var UserSchema = mongoose.Schema({
                 type:String,
             }
         ]
-    }
+    },
+    myUpcomingGigs:[
+     {
+         type:mongoose.Schema.Types.ObjectId,
+         ref:'Gig'
+     }
+    ],
+
+    gigsAmGoing:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Gig'
+        }
+    ]
 });
 
 var options =[{lastLoginField:UserSchema.lastLogin},{errorMessages:[{UserExistsError :'won ti lo oo'}]}]

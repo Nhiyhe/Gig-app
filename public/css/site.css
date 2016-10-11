@@ -49,3 +49,60 @@ body{
     margin-bottom: 20px;
     color:lightblue;
 }
+
+
+.gig > .gig-item{
+    position: relative;
+    border:1px solid red;
+    margin-bottom: 30px;
+    
+}
+
+.gig-item .gig-description{
+    padding: 0;
+    width: 350px;
+    padding-left: 10px;
+   }
+
+   .gig-item .gig-description a{
+       text-transform: uppercase;
+       font-size: 18px;
+       font-weight: 500;
+   }
+
+   .gig-item .gig-description p{
+       font-size: 16px;
+       font-weight: 400;
+       text-transform: capitalize;
+       
+   }
+
+.gig-item .gig-details{
+    position: absolute;
+    top:0;
+    left: 370px;
+    
+}
+
+
+.gig-item .gig-details h5{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;    
+    color: lightblue;
+    
+}
+
+.gig-item .gig-details p span{
+    font-style: italic;
+    font-size:14px;
+    font-weight: 400;
+}
+
+.gig-item .gig-details p{
+    color:#333;
+}
+
+#genre{
+    color: red;
+}

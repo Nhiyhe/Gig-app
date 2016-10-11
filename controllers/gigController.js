@@ -41,11 +41,12 @@ module.exports = function(app){
          username:req.user.username
      };
      
-     var gig = {title:req.body.gig.title, venue:req.body.gig.venue, artist:author};
+     var gig = {title:req.body.gig.title, venue:req.body.gig.venue,genre:req.body.gig.genre, artist:author};
      Gig.create(gig, function(err, data){
          if(err){
              console.log(err);
          }else{
+             
              res.redirect('/gigs');
          }
      })
