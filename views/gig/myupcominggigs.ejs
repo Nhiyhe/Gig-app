@@ -1,0 +1,19 @@
+<%   include ../partials/header %>
+
+
+<div class="container">
+<h3>My upcoming Gigs</h3>
+    <div class="col-md-offset-1 col-md-10">
+            <div class="upcoming-gigs">
+            <p>You currently have <%= gigs.length%> upcoming event(s)</p>
+            <% gigs.forEach(function(gig){ %>
+            <h4><%= gig.title %></h4>
+            <p>Event in <%= gig.eventDate %></p>
+            <p>Event created on <%= gig.createdOn %></p>
+
+            <% }) %>
+            </div>
+    </div>
+</div>
+
+<%   include ../partials/footer %>

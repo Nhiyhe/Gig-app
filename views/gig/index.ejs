@@ -14,6 +14,11 @@
                 <div class="gig-description">
                     <a href="/gigs/<%= gig._id %>"><h3><%= gig.title%></h3></a>
                     <p><%= gig.venue %></p>  
+                    <div>
+                    <form action="/gigs/<%= gig._id %>/attendance" method="POST">
+                        <button class="btn btn-primary btn-xs">Going</button>
+                    </form>
+                    </div>
                 </div>
 
                 <div class="gig-details">

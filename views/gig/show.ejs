@@ -3,15 +3,35 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-             <h1>Gigs</h1>
+             <h2>Details of <%= gig.title %></h2>
          <div>
-          <h2><%= gig.title %></h2>
+          <h3><%= gig.title %></h3>
           <span class="venue"> <%= gig.venue %></span>
            <div class="date"><%= gig.createdOn%></div>
+           <div class="pull-right">
+           <span><a href="/gigs">Go back</a></span> | 
            <span class="btn-comment"><a href="/gigs/<%= gig._id %>/comment/new" class="btn btn-success btn-xs">Add Comment</a></span>
+           </div>
         </div>
        </div>
     </div>
+
+
+    <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        <ul class="gig-comments">
+        
+          <% gig.comments.forEach(function(comment){ %>
+          <li>
+            <p><%= comment.body %> </p>
+            <p class="submitted">submitted by: <%= comment.author.username %></p>
+            <span><%= comment.submittedOn %></span>
+            </li>
+          <% })%>
+          
+        </ul>
+    </div>
+    </div
 </div>
 
 

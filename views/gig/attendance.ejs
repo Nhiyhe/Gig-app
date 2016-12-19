@@ -1,0 +1,12 @@
+<%   include ../partials/header %>
+
+
+ <h2>Gigs am attending</h2>
+ <ul>
+<% gigs.gigsAmGoing.forEach(function(gig){ %>
+ <li><%= gig.title %></li>
+<% }) %>
+
+</ul>
+
+<%   include ../partials/footer %>

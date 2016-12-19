@@ -5,15 +5,22 @@ var express = require('express'),
     mongoose =   require('mongoose'),
     ArtistController = require('./controllers/artistController'),
     Gigcontroller = require('./controllers/gigController'),
+    IndexController = require('./controllers/indexController'),
     seedDb        = require('./controllers/seedDB'),
     passport      = require('passport'),
-    User           = require('./models/user'),
+    flash         = require('connect-flash'),
+    toastr        = require('toastr'),
+    methodOverride = require('method-override'),
+    User          = require('./models/user'),
+    Attendance    = require('./models/attendance'),
     LocalStrategy = require('passport-local').Strategy,
     session       = require('express-session'),
 
     app = express();
     
+mongoose.Promise = global.Promise;
 
+var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -27,85 +34,38 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(flash());
+app.use(methodOverride("_method"));
 
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req,res,next){
+    app.use(function(req,res,next){
 
         res.locals.currentUser = req.user;
+        res.locals.err = req.flash('error');
+        res.locals.success = req.flash('success');
+        res.locals.toastr = toastr;
         return next();
     
-    
-});
+    });
 
-mongoose.connect("mongodb://localhost/gig-app-db", function(){
-    console.log(`Gig app Database is running`);
-});
-
-var PORT = process.env.PORT || 3000;
-
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.set('view engine','ejs');
-
 
 ArtistController(app);
 Gigcontroller(app);
-
+IndexController(app);
 //seedDb();
 
-
-
-
-app.get('/',function(req,res){
-    res.render('landing');
-});
-
-app.get('/register', function(req,res){
-    res.render('register');
-});
-
-app.post('/register', function(req,res){
-
- var newUser = new User({username:req.body.username, email:req.body.email });
-console.log(req.body.profile);
- User.register(newUser, req.body.password, function(err, user){
+mongoose.connect("mongodb://localhost/gig-app-db", function(err, result){
     if(err){
         console.log(err);
-        return res.redirect('/register');
-    }
-        passport.authenticate('local')(req, res, function(){
-                res.redirect('/gigs');
-        } );
-        
-    });
-});
-
-
-
-
-var isLoggedIn = function(req,res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-
-    res.redirect('/register');
-};
-
-app.get('/login',function(req,res){
-    res.render('login');
-});
-  
-app.post('/login', passport.authenticate('local',{successRedirect:'/gigs',failureRedirect:'/register'}), function(req,res){
-   
-});
-
-app.get('/logout', function(req,res){
-  req.logout();
-  res.redirect('/');
+    }else{
+        console.log(`Gig app Database is running`);
+    }    
 });
 
 app.listen(PORT, function(){

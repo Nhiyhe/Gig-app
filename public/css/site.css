@@ -8,6 +8,14 @@ body{
     font-family: 'Open Sans','Arial';
 }
 
+h2{
+    text-transform: uppercase;
+}
+
+h3{
+    text-transform: capitalize;
+}
+
 #gig h3{
     text-transform: capitalize;
     font-size:26px;
@@ -105,4 +113,34 @@ body{
 
 #genre{
     color: red;
+}
+
+.gig-comments{
+    margin-left:40px;
+    list-style:none;
+    margin-top:30px;
+    line-height: 15px;
+}
+
+.gig-comments > li{
+    margin-bottom:20px;
+    
+}
+
+.gig-comments > li p{
+    font-size:14px;
+    font-weight:500;
+}
+
+.gig-comments > li span{
+    font-style: normal;
+    font-size:13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color:lightskyblue;
+}
+
+.submitted{
+    font-style: italic;
+    font-weight: 100;
 }

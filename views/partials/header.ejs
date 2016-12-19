@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="/css/site.css" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,800,800i" rel="stylesheet">
+
 </head>
 <body>
 
@@ -37,9 +38,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">welcome, <%= currentUser.username %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Gigs I'm attending</a></li>
-            <li><a href="#">My upcoming Gigs</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="/gigs/user/<%= currentUser._id %>/attending">Gigs I'm attending</a></li>
+            <li><a href="/artist/myupcominggigs">My upcoming Gigs</a></li>
+            <li><a href="/artists/user/<%= currentUser._id %>/profile">Profile</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/logout">Logout</a></li>
           </ul>
@@ -51,4 +52,11 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div>
+<%if(success & success.length > 0){%>
+    
+    <%= toastr.info('','Hey yoo')%>
+
+<% } %>
+</div>
 
