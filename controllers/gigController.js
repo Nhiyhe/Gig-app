@@ -20,50 +20,43 @@ module.exports = function(app){
             }else{
                 res.render('gig/attendance',{gigs:gigs});
             }
-        })
+        });
     });
 
     app.get('/gigs',function(req,res){
         Gig.find({}).populate('genre').exec(function(err, gigs){
             if(err){
                 console.log(err);
-            }else{
-               
-                res.render('gig/index',{gigs:gigs});
-                
+            }else{               
+                res.render('gig/index',{gigs:gigs});                
             }
-        })
-        
+        });        
     });
 
     app.get('/gigs/new', isLoggedIn, function(req,res){
             Genres.find({},function(err, genres){
                 if(err){
                     console.log(err);
-                }else{
-                    
+                }else{                    
                     res.render('gig/new',{genres:genres});
                 }
-            })
+            });
     });
    
    app.post('/gigs/new', isLoggedIn, function(req,res){
      var author = {
          id:req.user._id,
          username:req.user.username
-     };
-     
+     };     
      var gig = {title:req.body.gig.title, venue:req.body.gig.venue, eventDate:req.body.gig.eventDate, 
          genre:req.body.gig.genre, artist:author};
      Gig.create(gig, function(err, data){
          if(err){
              console.log(err);
-         }else{
-             
+         }else{             
              res.redirect('/gigs');
          }
-     })
-
+     });
    });
 
     app.get('/gigs/:id', function(req,res){
@@ -73,8 +66,8 @@ module.exports = function(app){
             }else{
                 res.render('gig/show',{gig:foundGig});
             }
-        })
-    })
+        });
+    });
    
    app.get('/gigs/:id/comment/new', isLoggedIn, function(req,res){
        Gig.findById(req.params.id, function(err, foundGig){
@@ -83,8 +76,7 @@ module.exports = function(app){
            }else{
                 res.render('gig/comment',{gig:foundGig});
            }
-       })
-        
+       });       
    });
 
    app.post('/gigs/:id/comment', isLoggedIn, function(req,res){
@@ -107,9 +99,9 @@ module.exports = function(app){
                         foundGig.save();
                         res.redirect('/gigs/'+ req.params.id);
                     }
-                })
+                });
             }
-       })
+       });
    });
 
    
@@ -117,9 +109,7 @@ module.exports = function(app){
         var attendance = {
             users:req.user._id,
             gigs:req.params.id
-        };
-
-        
+        };        
          User.findById(req.user._id, function(err,foundUser){
              if(err){
                  console.log(err);
@@ -139,11 +129,22 @@ module.exports = function(app){
              };
          });
         
-        });
+    });
 
-   };
+    app.post('/user/attending/gigs/:id/remove', isLoggedIn, function(req, res){
+        User.findById(req.user._id, function(err, foundUser){
+            if(err){
+            console.log(err)
+            }else{
+                foundUser.gigsAmGoing.remove({_id:req.params.id});
+                foundUser.save();
+                res.redirect('/gigs');
+            }
 
-   
+        });   
+
+    });
+};
 
 var isLoggedIn = function(req,res, next){
     if(req.isAuthenticated()){

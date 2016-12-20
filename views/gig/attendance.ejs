@@ -4,8 +4,17 @@
  <h2>Gigs am attending</h2>
  <ul>
 <% gigs.gigsAmGoing.forEach(function(gig){ %>
- <li><%= gig.title %></li>
+ <li><h4><%= gig.title %></h4>
+ 
+ <div><form action="/user/attending/gigs/<%= gig._id %>/remove" method="POST">
+ <button class="btn btn-xs btn-danger">Cancel</button>
+
+</form></div>
+ </li><br>
 <% }) %>
+
+
+
 
 </ul>
 
